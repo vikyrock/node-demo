@@ -1,617 +1,192 @@
-@#$!$@%!%@%&!@!%@^!%@^!%@^!^^@^!^@^!@^!%@%!%%^@$!^%@^!@!%@^!&*@*(!*@*!*@*!&@!%@^&)  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'views/template.html',
-      controller: 'HomeCtrl'
-    })
+var express = require('express')
+var app = express()
+var port = 2000
+var bodyParser = require('body-parser')
+var path = require('path')
+var morgan = require('morgan')
+var fs = require('fs')
+var Grid = require('gridfs-stream')
+var mongo = require('mongodb')
+var multer = require('multer')
 
-    // .state('homeid', {
-    //     url: "/:id",
-    //     templateUrl: "views/template.html",
-    //     controller: 'HomeCtrl'
-    //   })
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
+app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use('/views', express.static(path.join(__dirname, 'views')))
 
-    .state('enquiry', {
-      url: '/enquiry',
-      templateUrl: 'views/template.html',
-      controller: 'EnquiryCtrl'
-    })
-    .state('registration', {
-      url: '/registration',
-      templateUrl: 'views/template.html',
-      controller: 'RegistrationCtrl'
-    })
-    .state('privacy', {
-      url: '/privacy-and-policies',
-      templateUrl: 'views/template.html',
-      controller: 'PrivacyCtrl'
-    })
-    .state('terms', {
-      url: '/terms-and-conditions',
-      templateUrl: 'views/template.html',
-      controller: 'TermsCtrl'
-    })
-    .state('technology', {
-      url: '/services/technology',
-      templateUrl: 'views/template.html',
-      controller: 'TechnologyCtrl'
-    })
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'html')
 
-    .state('gis', {
-      url: '/services/gis-mapping-company',
-      templateUrl: 'views/template.html',
-      controller: 'GisCtrl'
-    })
+var mongoose = require('mongoose')
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost:27017/clients', function (err) {
+  if (err) throw err
+  else console.log('connected to the clients db')
+})
+var conn = mongoose.connection
 
-    .state('work', {
-      url: '/why-work-with-us',
-      templateUrl: 'views/template.html',
-      controller: 'WorkCtrl'
-    })
+var nameSchema = new mongoose.Schema({
+  cname: String,
+  fileId: String,
+  file: Buffer
+})
 
-    .state('service', { // change by vikas 29.01.2018
-      url: '/services/cad-drafting-services',
-      templateUrl: 'views/template.html',
-      controller: 'ServiceCtrl'
-    })
+var clients = mongoose.model('clients', nameSchema)
 
-    .state('contact', {
-      url: '/contact-us',
-      templateUrl: 'views/template.html',
-      controller: 'ContactCtrl'
-    })
-    .state('we-are-hiring', {
-      url: '/we-are-hiring',
-      templateUrl: 'views/template.html',
-      controller: 'WeAreHiringCtrl'
-    })
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
-    .state('abouts', {
-      url: '/about-us',
-      templateUrl: 'views/template.html',
-      controller: 'AboutCtrl'
-    })
+app.get('/clients', function (req, res) {
+  clients.find(function (err, docs) {
+    res.json(docs)
+  // console.log(docs)
+  })
+})
 
-    .state('partner', {
-      url: '/partner-with-us',
-      templateUrl: 'views/template.html',
-      controller: 'PartnerCtrl'
-    })
-    .state('events', {
-      url: '/events',
-      templateUrl: 'views/template.html',
-      controller: 'EventCtrl'
-    })
-    .state('news', {
-      url: '/news',
-      templateUrl: 'views/template.html',
-      controller: 'NewsCtrl'
-    })
-    .state('landsurvey', {
-      url: '/services/land-survey-drafting',
-      templateUrl: 'views/template.html',
-      controller: 'LandsurveyCtrl'
-    })
-    .state('landdevelopment', {
-      url: '/services/land-development-design-services',
-      templateUrl: 'views/template.html',
-      controller: 'LanddevelopmentCtrl'
-    })
+var storage = multer.diskStorage({ //multers disk storage settings
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    var datetimestamp = Date.now();
+    cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+  }
+});
+var upload = multer({ //multer settings
+  storage: storage
+}).single('file');
 
-    .state('bim', {
-      url: '/services/building-information-modeling-drafting',
-      templateUrl: 'views/template.html',
-      controller: 'BimCtrl'
-    })
-    .state('cadconversion', {
-      url: '/services/cad-conversion',
-      templateUrl: 'views/template.html',
-      controller: 'CadcoversionCtrl'
-    })
-    .state('architectcad', {
-      url: '/services/architectural-cad-drafting',
-      templateUrl: 'views/template.html',
-      controller: 'ArchitectcadCtrl'
-    })
-    .state('gismapping', {
-      url: '/services/gis-mapping',
-      templateUrl: 'views/template.html',
-      controller: 'GismappingCtrl'
-    })
-    .state('gisappdevelopment', {
-      url: '/services/gis-application-development',
-      templateUrl: 'views/template.html',
-      controller: 'GisappdevelopmentCtrl'
-    })
-    .state('sdca', {
-      url: '/services/spatial-database-creation-and-administration',
-      templateUrl: 'views/template.html',
-      controller: 'SdcaCtrl'
-    })
-    .state('blog', {
-      url: '/blog',
-      templateUrl: 'views/template.html',
-      controller: 'BlogCtrl'
-    })
-    .state('cals-event-detail', {
-      url: '/cals-event-detail',
-      templateUrl: 'views/template.html',
-      controller: 'calsEventDetailsCtrl'
-    })
-    .state('njspls-event-detail', {
-      url: '/njspls-event-detail',
-      templateUrl: 'views/template.html',
-      controller: 'njsplsEventDetailsCtrl'
-    })
-    .state('blog-details', {
-      url: '/blog-details',
-      templateUrl: 'views/template.html',
-      controller: 'BlogDetailsCtrl'
-    })
-    .state('page-not-found', {
-      url: '/page-not-found',
-      templateUrl: 'views/template.html',
-      controller: 'Error404Controller'
-    })
-
-  $urlRouterProvider.otherwise('/page-not-found')
-  $locationProvider.html5Mode(true)
-  /* ngMetaProvider.useTitleSuffix(true)
-  ngMetaProvider.setDefaultTitle('Fallback Title')
-  ngMetaProvider.setDefaultTitleSuffix(' | YourSite') */
-  /*   ngMetaProvider.setDefaultTag('author', 'John Smith')
-   */})
-
-firstapp.run(['ngMeta', function (ngMeta) {
-  ngMeta.init()
-}])
-
-firstapp.filter('uploadpath', function () {
-  return function (input, width, height, style) {
-    console.log('inputpath: ', input)
-    var other = ''
-    if (width && width !== '') {
-      other += '&width=' + width
+/** API path that will upload the files */
+app.post('/upload', function (req, res) {
+  upload(req, res, function (err) {
+    if (err) {
+      res.json({ error_code: 1, err_desc: err });
+      return;
     }
-    if (height && height !== '') {
-      other += '&height=' + height
-    }
-    if (style && style !== '') {
-      other += '&style=' + style
-    }
-    if (input) {
-      if (input.indexOf('https://') == -1) {
-        return imgpath + '?file=' + input + other
-      } else {
-        return input
-      }
-    }
+    res.json({ error_code: 0, err_desc: null });
+  }) 
+    });
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/* var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './uploads')
+  },
+  filename: function (req, file, callback) {
+    console.log(file)
+    callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
   }
 })
 
-firstapp.directive('img', function ($compile, $parse) {
-  return {
-    restrict: 'E',
-    replace: false,
-    link: function ($scope, element, attrs) {
-      var $element = $(element)
-      if (!attrs.noloading) {
-        $element.after("<img src='img/loading.gif' class='loading' />")
-        var $loading = $element.next('.loading')
-        $element.load(function () {
-          $loading.remove()
-          $(this).addClass('doneLoading')
+var upload = multer({ storage: storage })
+
+app.post('/upload', function (req, res) {
+  Grid.mongo = mongoose.mongo
+  conn.once('open', function (req, res) {
+    console.log('open')
+    var gfs = Grid(conn.db)
+
+    console.log('post request started')
+    multer({
+      dest: './uploads',
+      upload: null, // take uploading process 
+      inMemory: true, // or false, not needed here
+
+      onFileUploadStart: function (file) {
+        // set upload with WritableStream 
+        console.log('uploading has started')
+        this.upload = gfs.createWriteStream({
+          filename: file.originalname,
+          mode: 'w',
+          chunkSize: 1024 * 4,
+          content_type: file.mimetype,
+          root: 'fs',
+          metadata: {} // put some crazy meta data in here
         })
-      } else {
-        $($element).addClass('doneLoading')
+        console.log('this.upload', this.upload, upload)
+      },
+
+      onFileUploadData: function (file, data) {
+        // put the chunks into db 
+        this.upload.write(data)
+      },
+
+      onFileUploadComplete: function (file) {
+        // end process 
+        this.upload.end()
+        console.log('successfully written File to MongoDB Gridfs')
       }
+    }),
+    function (req, res) {
+      res.sendStatus(200)
+    }
+  })
+})
+app.route('/clients/:file').get(function (req, res) {
+  var readstream = gfs.createReadStream({_id: req.params.file})
+  readstream.pipe(res)
+})
+ */
+Grid.mongo = mongoose.mongo
+conn.once('open', function (req, res) {
+  console.log('open')
+  var gfs = Grid(conn.db)
+
+  var writestream = gfs.createWriteStream({
+    filename: 'file.txt'
+  })
+
+  fs.createReadStream('C:/Users/GSD1004/Desktop/data_save/uploads/file.txt').pipe(writestream)
+
+  writestream.on('close', function (file) {
+    console.log(file.filename + 'writting to the database')
+  })
+})
+
+/* var storage = require('multer-gridfs-storage')({
+  url: 'mongodb://localhost:27017/clients',
+
+  file: (req, file) => {
+    console.log(req.file)
+    return {
+      filename: 'file' + Date.now()
     }
   }
 })
+// var upload = multer({ storage: storage })
+var upload = multer({ storage: storage  }).single('file')
 
-firstapp.directive('fancybox', function ($document) {
-  return {
-    restrict: 'EA',
-    replace: false,
-    link: function (scope, element, attr) {
-      var $element = $(element)
-      var target
-      if (attr.rel) {
-        target = $("[rel='" + attr.rel + "']")
-      } else {
-        target = element
-      }
-
-      target.fancybox({
-        openEffect: 'fade',
-        closeEffect: 'fade',
-        closeBtn: true,
-        padding: 0,
-        helpers: {
-          media: {}
-        }
-      })
+app.post('/clients', function (req, res) {
+  upload(req, res, function (err) {
+    if (err) {
+      console.log(err)
     }
-  }
+  })
 })
-/*firstapp.directive("addClassHeader", function ($window) {
-  return function (scope, element, attrs) {
-    angular.element($window).bind("scroll", function () {
-      var windowwidth = $(window).width()
-      if (this.pageYOffset >= 900) {
-        element.addClass('addclass')
-      } else {
-        element.removeClass('addclass')
-      }
-    })
+ */
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/* app.post('/clients', function (req, res) {
+  var data = new clients(req.body)
+  var newData = {
+    cname: req.cname,
+    fileId: req.fileId,
+    file: req.file
   }
-})
-*/
-/*firstapp.directive("addClassColor", function ($window) {
-  return function (scope, element, attrs) {
-    angular.element($window).bind("scroll", function () {
-      var windowwidth = $(window).width()
-      if (this.pageYOffset >= 30) {
-        element.addClass('addcolor')
-      } else {
-        element.removeClass('addcolor')
-      }
-    })
-  }
-});*/
-
-firstapp.directive('autoHeight', function ($compile, $parse) {
-  return {
-    restrict: 'EA',
-    replace: false,
-    link: function ($scope, element, attrs) {
-      var $element = $(element)
-      var windowHeight = $(window).height()
-      $element.css('min-height', windowHeight)
+  console.log('re.bodyy', data)
+  console.log('re.new', newData)
+  data.save(function (err, docs) {
+    if (err) {
+      throw err
+    }else {
+      res.json(docs)
+      console.log(docs)
     }
-  }
-})
+  })
+}) */
 
-/*firstapp.directive('autoWidth', function ($compile, $parse) {
-  return {
-    restrict: 'EA',
-    replace: false,
-    link: function ($scope, element, attrs) {
-      var $element = $(element)
-      var windowheight = $(window).height()
-      var windowwidth = $(window).width() * 1.5
-      var windowdifference = windowwidth - $(window).width()
-      var windowwidthleft = windowdifference / 2
-      var windowwidthbottom = windowwidth / 7
-      var windowwidth2 = $(window).width() * 2
-      var windowwidth3 = $(window).width() * 3
-      var windowwidth4 = $(window).width() * 4
-      var windowwidth5 = $(window).width() * 5
-      var windowwidth6 = $(window).width() * 6
-      var windowheightbottom = windowwidth - windowwidthbottom
-      $(".landing-world").css({
-        "width": windowwidth + "px",
-        "bottom": "-" + windowheightbottom + "px",
-        "left": "-" + windowwidthleft + "px",
-      })
-    }
-  }
-});*/
-
-// firstapp.directive('imagesLoaded', function ($compile, $parse) {
-//   return {
-//     restrict: 'EA',
-//     replace: false,
-//     link: function ($scope, element, attrs) {
-//       var $element = $(element)
-//       $element.waitForImages().progress(function (loaded, count, success) {
-//         console.log(loaded + ' of ' + count + ' images has ' + (success ? 'loaded' : 'failed to load') + '.')
-//         $element.addClass('all-loaded')
-//       })
-//     }
-//   }
-// })
-firstapp.directive('onlyDigits', function () {
-  return {
-    require: 'ngModel',
-    restrict: 'A',
-    link: function (scope, element, attr, ctrl) {
-      var digits
-
-      function inputValue (val) {
-        if (val) {
-          if (attr.type == 'tel') {
-            digits = val.replace(/[^0-9\+\\]/g, '')
-          } else {
-            digits = val.replace(/[^0-9\-\\]/g, '')
-          }
-
-          if (digits !== val) {
-            ctrl.$setViewValue(digits)
-            ctrl.$render()
-          }
-          return parseInt(digits, 10)
-        }
-        return undefined
-      }
-      ctrl.$parsers.push(inputValue)
-    }
-  }
-})
-
-firstapp.directive('aplhaOnly', function () {
-  return {
-    require: 'ngModel',
-    link: function (scope, element, attr, ngModelCtrl) {
-      function fromUser (text) {
-        var transformedInput = text.replace(/[^a-zA-Z]/g, '')
-        if (transformedInput !== text) {
-          ngModelCtrl.$setViewValue(transformedInput)
-          ngModelCtrl.$render()
-        }
-        return transformedInput
-      }
-      ngModelCtrl.$parsers.push(fromUser)
-    }
-  }
-})
-
-/*firstapp.directive('autoRotate', function ($compile, $parse) {
-  return {
-    restrict: 'EA',
-    replace: false,
-    link: function ($scope, element, attrs) {
-      var $element = $(element)
-      var windowwidth = $(window).width()
-      var windowwidth2 = $(window).width() * 2
-      var windowwidth3 = $(window).width() * 3
-      var windowwidth4 = $(window).width() * 4
-      var windowwidth5 = $(window).width() * 5
-      var windowwidth6 = $(window).width() * 6
-      var scrollLoc = $(document).scrollTop()
-      console.log(scrollLoc)
-      if (scrollLoc >= windowwidth) {
-        $(this).addClass("rotate2")
-      }
-      if (scrollLoc >= windowwidth2) {
-        $(this).addClass("rotate3")
-      }
-      if (scrollLoc >= windowwidth3) {
-        $(this).addClass("rotate4")
-      }
-      if (scrollLoc >= windowwidth4) {
-        $(this).addClass("rotate5")
-      }
-      if (scrollLoc >= windowwidth5) {
-        $(this).addClass("rotate6")
-      }
-      if (scrollLoc >= windowwidth6) {
-        $(this).addClass("rotate7")
-      } else {
-        $(this).removeClass("rotate7")
-      }
-    }
-  }
-});*/
-
-firstapp.config(function ($translateProvider) {
-  $translateProvider.translations('en', LanguageEnglish)
-  $translateProvider.translations('hi', LanguageHindi)
-  $translateProvider.preferredLanguage('en')
-})
-
-firstapp.directive('imageonload', function () {
-  return {
-    restrict: 'A',
-    link: function (scope, element, attrs) {
-      element.bind('load', function () {
-        scope.$apply(attrs.imageonload)
-      })
-    }
-  }
-})
-
-firstapp.directive('uploadImage', function ($http, $filter, $timeout) {
-  return {
-    templateUrl: 'views/directive/uploadImage.html',
-    scope: {
-      model: '=ngModel',
-      type: '@type',
-      callback: '&ngCallback'
-    },
-    link: function ($scope, element, attrs) {
-      console.log('get id', document.getElementById('inputImage').value)
-      console.log('***** $scope ******', $scope)
-      console.log('***** element ******', element)
-      console.log('***** attrs ******', attrs)
-
-      console.log('*** uploadurl:*** ', uploadurl)
-
-      $scope.showImage = function () {
-        console.log($scope.image)
-      }
-
-      $scope.check = true
-      $scope.type = 'pdf'
-      if (!$scope.type) {
-        $scope.type = 'image'
-      }
-
-      $scope.isMultiple = false
-
-      $scope.inObject = false
-      if (attrs.multiple || attrs.multiple === '') {
-        $scope.isMultiple = true
-        $('#inputImage').attr('multiple', 'ADD')
-      }
-
-      if (attrs.noView || attrs.noView === '') {
-        $scope.noShow = true
-      }
-      // if (attrs.required) {
-      //     $scope.required = true
-      // } else {
-      //     $scope.required = false
-      // }
-
-      $scope.$watch('image', function (newVal, oldVal) {
-        console.log(newVal, oldVal)
-        isArr = _.isArray(newVal)
-        if (!isArr && newVal && newVal.file) {
-          $scope.uploadNow(newVal)
-        } else if (isArr && newVal.length > 0 && newVal[0].file) {
-          $timeout(function () {
-            console.log(oldVal, newVal)
-            console.log(newVal.length)
-            _.each(newVal, function (newV, key) {
-              if (newV && newV.file) {
-                $scope.uploadNow(newV)
-              }
-            })
-          }, 100)
-        }
-      })
-
-      if ($scope.model) {
-        if (_.isArray($scope.model)) {
-          $scope.image = []
-          _.each($scope.model, function (n) {
-            $scope.image.push({
-              url: n
-            })
-          })
-        } else {
-          if (_.endsWith($scope.model, '.pdf')) {
-            $scope.type = 'pdf'
-          }
-        }
-      }
-      if (attrs.inobj || attrs.inobj === '') {
-        $scope.inObject = true
-      }
-      $scope.clearOld = function () {
-        $scope.model = []
-      }
-
-      $scope.uploadNow = function (image) {
-        console.log('******* inside upload now ******')
-        $scope.uploadStatus = 'uploading'
-
-        var Template = this
-        image.hide = true
-        var formData = new FormData()
-        formData.append('file', image.file, image.name)
-        $http.post(uploadurl, formData, {
-          headers: {
-            'Content-Type': undefined
-          },
-          transformRequest: angular.identity
-        }).then(function (data) {
-          console.log('upload data: ', data)
-          data = data.data
-          $scope.uploadStatus = 'uploaded'
-          if ($scope.isMultiple) {
-            if ($scope.inObject) {
-              $scope.model.push({
-                'image': data.data[0]
-              })
-            } else {
-              if (!$scope.model) {
-                $scope.clearOld()
-              }
-              $scope.model.push(data.data[0])
-            }
-          } else {
-            if (_.endsWith(data.data[0], '.pdf')) {
-              $scope.type = 'pdf'
-            } else {
-              $scope.type = 'image'
-            }
-            $scope.model = data.data[0]
-            console.log($scope.model, 'model means blob')
-          }
-          $timeout(function () {
-            $scope.callback()
-          }, 100)
-        })
-      }
-    }
-  }
-})
-
-// number format
-firstapp.directive('phoneInput', function ($filter, $browser) {
-  return {
-    require: 'ngModel',
-    link: function ($scope, $element, $attrs, ngModelCtrl) {
-      var listener = function () {
-        var value = $element.val().replace(/[^0-9]/g, '')
-        $element.val($filter('tel')(value, false))
-      }
-
-      // This runs when we update the text field
-      ngModelCtrl.$parsers.push(function (viewValue) {
-        return viewValue.replace(/[^0-9]/g, '').slice(0, 10)
-      })
-
-      // This runs when the model gets updated on the scope directly and keeps our view in sync
-      ngModelCtrl.$render = function () {
-        $element.val($filter('tel')(ngModelCtrl.$viewValue, false))
-      }
-
-      $element.bind('change', listener)
-      $element.bind('keydown', function (event) {
-        var key = event.keyCode
-        // If the keys include the CTRL, SHIFT, ALT, or META keys, or the arrow keys, do nothing.
-        // This lets us support copy and paste too
-        if (key == 91 || (15 < key && key < 19) || (37 <= key && key <= 40)) {
-          return
-        }
-        $browser.defer(listener); // Have to do this or changes don't get picked up properly
-      })
-
-      $element.bind('paste cut', function () {
-        $browser.defer(listener)
-      })
-    }
-
-  }
-})
-firstapp.filter('tel', function () {
-  return function (tel) {
-    // console.log(tel)
-    if (!tel) {
-      return ''
-    }
-
-    var value = tel.toString().trim().replace(/^\+/, '')
-
-    if (value.match(/[^0-9]/)) {
-      return tel
-    }
-
-    var country, city, number
-
-    switch (value.length) {
-      case 1:
-      case 2:
-      case 3:
-        city = value
-        break
-
-      default:
-        city = value.slice(0, 3)
-        number = value.slice(3)
-    }
-    if (number) {
-      if (number.length > 3) {
-        number = number.slice(0, 3) + '-' + number.slice(3, 7)
-      } else {
-        number = number
-      }
-      return (city + '-' + number).trim()
-    } else {
-      return city
-    }
-  }
+app.listen(port, () => {
+  console.log('Server listening on port ' + port)
 })

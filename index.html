@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Intro to Node and MongoDB</title>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script> 
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <!-- <link href="style/progress.css" rel="stylesheet"> -->
+
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+        <script src="node_modules/ng-file-upload/dist/ng-file-upload-all.min.js"></script>
+        <script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="public/controller.js"></script>
+        <script src="public/filectrl.js"></script>
+        <script src="public/directive.js"></script>
+        <script src="public/service.js"></script>
+
+    </head>
+
+    <body ng-app="app" ng-controller="ctrl">
+        <ng-include src="'views/header1.html'"></ng-include>
+
+        <h1>{{msg}}</h1>
+        <h3>{{lot}}</h3>
+       
+       <h4>Upload on file select</h4>
+<div ng-controller="MyCtrl as up">
+<input type="file" ngf-select="onFileSelect($files)" multiple>
+
+<!-- <div class="row">
+    <label for="fileToUpload">Select a File to Upload</label>
+    <br />
+    <input type="file" ng-model-instant id="fileToUpload" multiple onchange="angular.element(this).scope().setFiles(this)" />
+</div>
+<div id="dropbox" class="dropbox" ng-class="dropClass">
+    <span>{{dropText}}</span>
+</div>
+<div ng-show="files.length">
+    <div ng-repeat="file in files.slice(0)">
+        <span>{{file.webkitRelativePath || file.name}}</span>
+        (
+        <span ng-switch="file.size > 1024*1024">
+            <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+            <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+        </span>)
+    </div>
+    <input type="button" ng-click="uploadFile()" value="Upload" />
+    <div ng-show="progressVisible">
+        <div class="percent">{{progress}}%</div>
+        <div class="progress-bar">
+            <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+        </div>
+    </div>
+</div> -->
+       
+        {{errorMsg}}
+
+        <table class="table">
+            <thead>
+                <tr> <th>ID</th>
+                    <th>CLIENT</th>
+                    <th>FILE ID</th>
+                    <th>FILES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{filename}}
+                    </td>
+                </tr>
+                <tr ng-repeat="client in result">
+                    <td>{{client._id}}</td>
+                    <td>{{client.cname}}</td>
+                    <td>{{client.fileId}}</td>
+                    <td>{{client.myFile}}</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<br><br><br><br><br><br>
+
+
+    </body>
+</html>
