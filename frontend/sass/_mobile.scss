@@ -1,0 +1,815 @@
+@media (max-width: 1200px) {
+    .side-menu,
+    .sides-menu {
+        padding: 0px;
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    //scss for we are hiring
+     .field-study {
+    width: 100%;
+    margin-left: 0px;
+    .btn-field-study{
+    width: 100%;
+         }
+     }
+	 
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+		position:fixed;
+	}
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
+        color:#4f65af;
+    }
+	#dmcus{
+		background-color:#f16366;
+		padding: 0px 50px;
+		text-decoration-line:none;
+		text-align:left;
+	}
+	#dmcus > li > a{
+		font-family:"NTR";
+	}
+	.nav > ul > li > a{
+		color:#fff;
+	}
+	#ib1{
+		color:#f16366;
+	}
+    
+    .upload-btn button{
+         width: 230px;
+    }
+     .current-padd {
+    margin: 15px 120px 0px 0px !important;
+    }
+    //end of scss for we are hiring
+    //home
+    .side-menu {
+        padding: 30px 0px;
+    }
+    .btn-ipad-mt {
+        margin-top: 15px;
+    }
+    .blue-sec {
+        padding: 25px 0px;
+    }
+    .close-spacing {
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+    .home-cont-services {
+        p {
+            display: none !important;
+        }
+    } // .flexslider .flex-direction-nav .flex-next,
+    // .flexslider .flex-direction-nav .flex-prev {
+    //     display: none;
+    // }
+    .home-img-services figure .circling span {
+        right: 8%;
+    }
+    .home-img-services figure .circling .gis-service {
+        right: 40%;
+    } //about
+    .crew .brand-danger {
+        padding: 40px 10px;
+    }
+    .blue-sec {
+        h6 {
+            //  font-size: 10px;
+        }
+    } //header
+    header .navbar .absoluted {
+        margin-top: 25px;
+        margin-right: 45px;
+    } //registration
+    .cad-padding .cad-list {
+        display: none;
+    }
+    .cad-padding .fa {
+        display: none;
+    }
+    .fa-reg {
+        height: 50px;
+        padding: 17px 13px;
+    }
+    .registration {
+        padding: 10px 0px;
+        .form-group {
+            margin: 0px 0px 20px 0px;
+        }
+    }
+    .registration-form {
+        padding: 0;
+    }
+    .enquiry-content {
+        margin: 50px 0 0 0px;
+    }
+    .sub-content {
+        margin: 10px 0px;
+    }
+    .btn-country-main {
+        padding: 15px 135px 15px 20px;
+    }
+    .btn-service {
+        padding: 15px 104px 15px 20px;
+    }
+    .btn-bussiness {
+        padding: 15px 135px 15px 20px;
+    }
+    .service-mob {
+        margin-bottom: 45px;
+    }
+    .enquiry-textarea {
+        margin: 170px 0px 50px 0px;
+    } // .reg-dropdown2 {
+    //     padding-bottom: 110px;
+    // }
+    .dropshow {
+        span {
+            input {
+                margin-top: 0px;
+            }
+        }
+    } //cad
+    .slider {
+        ul {
+            li {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    } //technology
+    .technology-icon {
+        display: none
+    }
+    .slide-arrows {
+        &:before {
+            content: none;
+        }
+        &:after {
+            content: none;
+        }
+    } //service
+    .min-h {
+        min-height: 190px;
+    }
+    .land-development {
+        padding: 20px 0px !important;
+    }
+    .cad-drafting .col-flex {
+        padding: 0px;
+    }
+    .cad-drafting .row-flex {
+        padding: 0px;
+    }
+    .ways-cad {
+        padding: 40px 17px;
+    }
+    .needs {
+        padding: 0px
+    } //end service
+    //work
+    .work-container {
+        padding: 0 !important;
+    }
+    .cad-main-padding .row-flex {
+        padding: 0px
+    }
+    .map {
+        // display: inline-block;
+        // width: 900px;
+        width: 100%;
+        .map-width {
+            width: 100%;
+        }
+    } //footer
+    footer {
+        p {
+            margin-top: 5px;
+        }
+        .middle {
+            padding: 0 55px;
+        }
+        span,
+        ul {
+            display: inline
+        }
+        li {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        } //for registration
+        //for enquiry
+    } //gis,technology,service flexslider//
+    .flex-direction-nav {
+        a {
+            height: auto;
+        }
+        .flex-prev {
+            left: -40px !important;
+            top: 13px;
+        }
+        .flex-next {
+            right: -30px !important;
+            top: 13px;
+        }
+    }
+    .flexslider {
+        .flex-prev,
+        .flex-next {
+            display: block;
+            height: 50px;
+            width: 50px;
+        }
+        a.flex-prev {
+            &:before {
+                content: '';
+                background-image: url(../img/backarrow.png);
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        a.flex-next {
+            &:before {
+                content: '';
+                background-image: url(../img/arrow.png);
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .flex-control-nav {
+            display: none;
+        }
+    } //gis,technology,service flexslider//
+}
+
+@media (max-width: $screen-xs-max) {
+	body{
+	  font-family: 'NTR';
+	  font-weight: 400;
+	  letter-spacing: 2px;
+	  overflow-x:hidden;
+	  /*background-image: url('../img/home/mobile_background.jpg');*/
+      background-repeat:no-repeat;
+      background-size : cover;
+	  padding:0px;
+	}
+    .about{
+        padding-top:50px;
+    }
+    .home_section{
+    
+    }
+    .custom_section{
+      background-image: url('../img/bg-dotted.jpg');
+      background-size : 100% auto;
+    }
+    .cus-mob{
+        padding-top:50px;
+    }
+	#custom_id_tm{
+		/*background-color:#DCDCDC;*/	
+	}
+	.content{
+		
+	}
+	.navbar-header{
+		margin-right: 1px; 
+	}
+    //scss for we are hiring
+   .current-padd {
+    margin: 15px 40px 0px 0px !important;
+    .circling {
+        height: 120px;
+        width: 120px;
+    }
+   }
+   .field-study {
+    width: 100%;
+    margin-left: 0px;
+    .btn-field-study{
+    width: 100%;
+    }
+}
+.upload-btn button{
+    width:250px;
+}
+    //end of we are hiring
+    header .clearfix {
+        margin-bottom: 0px;
+    } //scss for mobile-dropdown  
+    .side-menu   ul li {
+    padding: 4px 0;
+}
+    .dropdown-menu-mobile {
+        background: #f0f0f0 !important;
+        top: 94%;
+    }
+    .dropdown-mobile {
+        margin: 15px 0px;
+    }
+    .service-dropdown-mobile {
+        display: block;
+        label {
+            font-weight: 400 !important;
+        }
+        .fa-reg {
+            height: 29px !important;
+            background-color: #f16366;
+            right: 0px;
+            top: 0px;
+            padding: 10px 12px !important;
+        }
+        .btn-main {
+            border: 1px solid transparent !important;
+            background: #4e65af;
+            padding: 5px 8px;
+            font-size: 12px;
+            color: #fff;
+            text-align: left;
+            width: 100%;
+            &:hover {
+                color: #fff !important;
+            }
+        }
+    } 
+    //end of scss for mobile-dropdown  
+    .home-img-services figure {
+        margin: 0px;
+    }
+    .side-menu {
+        a {
+            span {
+                display: block;
+                height: auto;
+                width: 160px;
+                margin-top: 5px;
+            }
+        }
+    }
+    .btn-partner {
+        margin-top: 10px;
+        font-size: 10px;
+    }
+    .landing-logo .img-landing img {
+        width: 20%;
+        margin-bottom: 10px;
+    }
+    .hand-swipe img {
+        height: 50px;
+        margin-bottom: 10px;
+        width: auto!important;
+    } //landing animation
+    .landing-before {
+        .landing-all {
+            font-size: 20px;
+        }
+        .landing1,
+        .landing2,
+        .landing3,
+        {
+            width: 95%;
+        }
+        .landing4,
+        .landing5,
+        .landing6,
+        .landing7,
+        .landing8,
+        .landing9,
+        .landing10,
+        .landing11,
+        .landing12 {
+            top: 60%;
+        }
+    } //landing animation end
+    //gis,technology,service flexslider//
+    div#map {
+        width: 100% !important; // margin: 0 auto;
+    }
+    .flex-direction-nav {
+        a {
+            height: auto;
+        }
+        .flex-prev {
+            left: -40px !important;
+            top: 13px;
+        }
+        .flex-next {
+            right: -25px !important;
+            top: 13px;
+        }
+    } //gis,technology,service flexslider//
+    p {
+        font-size: 12px !important;
+        letter-spacing: 1px;
+    }
+    h4 {
+        font-size: 32px !important;
+    }
+	h3 {
+        font-size: 16px !important;
+    }
+    h5 {
+        font-size: 14px !important;
+    }
+    h6 {
+        font-size: 13px !important;
+    }
+    .slider ul li {
+        font-size: 11px;
+    }
+    .home-img-services:hover .home-cont-services {
+        display: block;
+        padding: 0;
+    }
+    .crew .pdf .brand-danger {
+        letter-spacing: 0px
+    }
+    li {
+        letter-spacing: 1px;
+    }
+    .circle {
+        height: 80px;
+        width: 80px;
+    }
+   /* .info {
+        padding: 0 0px 15px 0px;
+    }*/
+    .letter0 {
+        letter-spacing: 0px !important;
+    } //home
+    .home-partners-slider {
+        padding: 0 20px;
+    }
+    .mouse img {
+        width: 60%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .mouse-left-5 {
+        margin-left: -15px;
+    }
+    .mouse-left {
+        margin-left: 15px;
+    }
+    .home-about-play {
+        padding: 0 20px;
+        .rect1,
+        .rect2 {
+            display: none;
+        }
+    }
+    .button {
+        text-align: center;
+    }
+    .mt25 {
+        margin-top: 0px
+    }
+    .center-align {
+        text-align: center
+    }
+    .map-top {
+        margin-top: 30px;
+    }
+    .map-location {
+        padding: 0 10px;
+        min-height: 250px;
+        .tab li {
+            padding: 1px 40px;
+            display: inline-block;
+        }
+    } //services
+    .ways-info {
+        margin-top: 15px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+    .home-img-services {
+        margin-top: 20px;
+    }
+    .landing-bottom {
+        margin-top: 10px;
+    } //technology
+    .p-50 {
+        padding: 0px
+    }
+    .technology-icon {
+        display: none
+    }
+    .slide-arrows {
+        &:before {
+            content: none;
+        }
+        &:after {
+            content: none;
+        }
+    } //registration
+    .registration {
+        .reg-font {
+            font-size: 16px !important;
+        }
+    }
+    .enquiry {
+        padding: 30px 0;
+    }
+    .min-h {
+        min-height: 0
+    }
+    .in-textarea {
+        margin: 0 0 15px;
+    }
+    .dropdown-menu {
+        padding: 10px 10px;
+    }
+    .enquiry-textarea {
+        margin: 15px 0 !important;
+    }
+    .registration {
+        padding: 10px 0px 0px;
+    }
+    .cad-padding .fa {
+        display: none;
+    }
+    .cad-padding .cad-list {
+        display: none;
+    }
+    .registration-form {
+        padding: 0px;
+    }
+    .fa-reg {
+        height: 44px !important;
+        padding: 15px 7px !important;
+        width: 40px;
+    }
+    .btn {
+        font-size: 10px !important
+    } // .business-mob {
+    //     margin-bottom: 105px;
+    // }
+    .service-mob {
+        margin: 0;
+        margin-top: 10px;
+    }
+    .sub-content {
+        margin: 10px 10px 40px;
+    }
+    .btn-country {
+        margin-bottom: 10px;
+    }
+    .btn-bussiness {
+        width: 303px;
+    } //end of registration
+    //footer
+    footer {
+        p {
+            margin-bottom: 10px;
+            font-size: 8px !important;
+            text-align: center !important;
+        }
+    }
+    footer .social li a {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 100%;
+        color: #000;
+        text-align: center;
+        line-height: 20px;
+        margin-left: 3px;
+    }
+    .middle {
+        padding: 0px 0 8px!important; //margin-left: 3px;
+        text-align: center !important;
+        span {
+            margin-left: 0px;
+            margin-bottom: 4px;
+            font-size: 8px;
+        }
+        ul {
+            margin: 0 14px;
+        }
+    }
+ //footer
+    //header
+    header .navbar .absoluted {
+        margin-right: 15px !important;
+    }
+    .side-menu {
+        padding: 30px 30px 75px 30px !important;
+    }
+    .close-spacing {
+        margin-right: 8px !important;
+        margin-top: 8px !important;
+    } //work
+    .about {
+        .about-title {
+            p {
+                font-size: 16px!important;
+            }
+        }
+    }
+    .more {
+        p:nth-of-type(1),
+        p:nth-of-type(3) {
+            margin: 0;
+        }
+    }
+    .work-tab h5 {
+        padding: 0px;
+    }
+    .more span {
+        font-size: 12px
+    }
+    .image,
+    .images {
+        height: 50px;
+        width: 50px;
+    } //work 
+    //partner
+    .partnership {
+        padding: 0px;
+        ul {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+    }
+    .tab-margin {
+        margin-left: 0px !important
+    } //partner
+    //cad 
+    .here-m {
+        margin: 0 5px;
+    }
+    .civilmob {
+        margin: 0 17px;
+        text-align: justify;
+    }
+    .pd-left {
+        padding-left: 0px !important;
+    }
+    .f16 {
+        font-size: 16px !important
+    }
+    .land-mob {
+        display: block;
+        margin-left: 20px;
+    }
+    .block {
+        display: block;
+    }
+    .get-in {
+        margin-top: 20px;
+    }
+    .slider {
+        ul {
+            li {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .row-flex {
+        display: block;
+    }
+    .pdf {
+        .buttons {
+            width: 90%;
+        }
+        .buttons+.buttons {
+            width: 90%;
+            margin-top: 10px;
+        }
+    } //about
+    .abour-row {
+        padding: 0 10px;
+    }
+    .danger-mob {
+        padding: 0px 20px; // text-align: justify;
+    }
+    .land ul {
+        padding: 0 20px;
+    }
+    .land-servey{
+   ul{
+ padding: 0 0px;
+    }
+    h5{
+        margin-left: 0 !important;
+    }
+    } 
+    .about-title {
+        padding-top: 30px;
+    }
+    .kesler-margin {
+        margin-top: 35px;
+    } //gis
+    .vector80 {
+        padding-left: 0 !important;
+    } //home
+    .logos {
+        width: 70%;
+        img {
+            margin-top: 20px;
+        }
+    }
+    .home-about-cont {
+        padding: 10px 0px 0 0;
+    } //home animation
+    .drone-ani {
+        display: none;
+    }
+    .mobile-logo {
+        img {
+            width: 70%;
+            max-width: inherit;
+        }
+    }
+    .home-img-services figure .circling span {
+        font-weight: 700;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        width: 100%;
+        font-size: 10px;
+        transform: translateX(-50%);
+    }
+    .home-img-services figure .circling .gis-service {
+        right: 24%;
+    }
+    .map.map-top {
+        display: none;
+    }
+    .contact-differ {
+        .map.map-top {
+            display: block;
+        }
+    }
+    .loader,
+    .percentage {
+        max-width: 250px;
+    }
+    .img-loading {
+        margin: 20% auto 25px;
+        width: 145px;
+    }
+    .map-location {
+        display: block;
+        min-height: 210px;
+        .tab li {
+            padding: 1px 10px;
+            display: block;
+        }
+    }
+    .map-location .tab li .address-india,
+    .map-location .tab li .address-usa {
+        padding-bottom: 10px;
+    }
+    .landing-world {
+        img.loading {
+            display: none;
+        }
+    }
+	.fa-phone{
+		color:#fff;
+	}
+	.fa-envelope-o{
+		color:#fff;
+	}
+	
+    .logos img {
+        margin-top: 8px;
+    }
+	.main-container {
+		margin: 20px 15px;
+	}
+	.animation-element,
+	.animation-element:nth-of-type(3n-1),
+	.animation-element:nth-of-type(3n-2),
+	.animation-element:nth-of-type(3n-0) {
+		width: 100%;
+		margin: 0px 0px 30px 0px;
+	}
+	.subject .header .date,
+	.subject .header .category {
+		width: 100%;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	$menu-underline-from-center-border-thickness: 0rem;
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+		border-color: #fff;
+		background-color: #f16366;
+	}
+	.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
+		background-color:transparent;
+	}
+
+}

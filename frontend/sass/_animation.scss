@@ -1,0 +1,35 @@
+.landing-logo .img-landing .hand-swipe-left img.animation-hand-left {
+    @include animation(hand-swipe-animation 2s linear 300ms infinite);
+}
+
+.hand-swipe-right img.animation-hand-left {
+    @include animation(hand-swipe-animation-left 2s linear 300ms infinite);
+}
+
+@include keyframes (hand-swipe-animation) {
+    0% {
+        @include transform(translate(150%));
+    }
+    80% {
+        @include transform(translate(-150%));
+        @include opacity(0);
+    }
+    100% {
+        @include transform(translate(-150%));
+        @include opacity(0);
+    }
+}
+
+@include keyframes (hand-swipe-animation-left) {
+    0% {
+        @include transform(translate(-150%));
+    }
+    80% {
+        @include transform(translate(150%));
+        @include opacity(0);
+    }
+    100% {
+        @include transform(translate(150%));
+        @include opacity(0);
+    }
+}

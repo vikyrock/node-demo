@@ -1,0 +1,127 @@
+<div class="custom_section">
+<div class="reg about">
+  <div class="registration ">
+	<div class="container">          
+	  <ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li id="bcrumb-li">We Are Hiring</li> 
+	  </ol>
+	</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+          <div class="text-center">
+            <h1 class="primary uppercase">WE ARE HIRING</h1>
+          </div>
+        </div>
+      </div>
+      <form class="registration-form" ng-submit="submitForm(form)" name="formName">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group" ng-class="{'form-invalid': formName.name.$invalid && formName.name.$touched}">
+              <input type="text" class="form-control" name="name" id="name" placeholder="NAME" ng-model="form.name" required>
+              <span ng-show="formName.name.$touched && formName.name.$invalid">Please enter name.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.phone.$invalid && formName.phone.$touched}">
+              <input type="text" name="phone" class="form-control" phone-input id="phone" ng-model="form.phone" placeholder=" PHONE" required>
+              <span ng-show="formName.phone.$touched && formName.phone.$invalid">
+                Please enter vaild 10 digit cell number.
+              </span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.degree1.$invalid && formName.degree1.$touched}">
+              <input type="text" name="degree1" class="form-control" id="degree11" placeholder="DEGREE 1" ng-model="form.degree1" required>
+              <span ng-show="formName.degree1.$touched && formName.degree1.$invalid">Please enter your degree.</span>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="" class="form-control" id="degree2" placeholder="DEGREE 2" ng-model="form.degree2">
+            </div>
+
+            <div class="form-group" ng-class="{'form-invalid': formName.experience.$invalid && formName.experience.$touched}">
+              <input type="text" name="experience" class="form-control" id="yearofexperience" placeholder="YEAR OF EXPERIENCE " ng-model="form.experience"
+                required>
+              <span ng-show="formName.experience.$touched && formName.experience.$invalid">Please enter your year of experience.</span>
+            </div>
+
+            <div class="form-group current-padd" ng-class="{'form-invalid': formName.salary.$invalid &&formName.salary.$touched}">
+              <input type="text" name="salary" class="form-control" id="salary" placeholder="CURRENT SALARY" ng-model="form.salary" required>
+              <span ng-show="formName.salary.$touched && formName.salary.$invalid">Please enter current salary.</span>
+            </div>
+            <div class="form-group current-padd">
+              <div class="upload-btn relate">
+                <button>UPLOAD RESUME <span class="button-pluse"> <i class="fa fa-plus" aria-hidden="true"></i></span></button>
+                <upload-image ng-model="form.resume" no-view='true' class="upload-resume">UPLOAD RESUME </upload-image>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group" ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+              <input type="email" name="email" class="form-control" id="email" ng-model="form.email" placeholder="EMAIL ADDRESS" required>
+              <span ng-show="formName.email.$touched && formName.email.$invalid">Please enter vaild email.</span>
+            </div>
+            <div class="add-textarea-field">
+              <div class="form-group" ng-class="{'form-invalid': formName.address1.$invalid && formName.address1.$touched}">
+                <textarea class="form-control" name="address1" id="comment" rows="9" placeholder="ADDRESS" ng-model="form.address" required></textarea>
+                <span ng-show="formName.address1.$touched && formName.address1.$invalid">Please enter address.</span>
+              </div>
+            </div>
+            <div class="btn-group field-study" ng-init="hiringdrop= false">
+              <button type="button" class="btn btn-field-study btn-main" ng-click="hiringdrop=!hiringdrop">
+                    FIELD OF STUDY  
+                    <i class="fa  fa-reg" aria-hidden="true"></i>
+                    <REQUIRED></REQUIRED>  
+                  </button>
+              <div class="dropdown-menu dropshow" ng-show="hiringdrop">
+                <div class="click-out" ng-click="hiringdrop=!hiringdrop"></div>
+                <span class="options">
+                      <input type="checkbox" id="civil"  ng-click="addMe('Civil -2D','civil')"/>
+                      <label for="civil">Civil -2D</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="bim" ng-click="addMe('BIM','bim')"/>
+                      <label for="bim">BIM</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="gis" ng-click="addMe('GIS','gis')"/>
+                      <label for="gis">GIS</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="mechanical" ng-click="addMe('Mechanical','mechanical')"/>
+                      <label for="mechanical">Mechanical</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="coder" ng-click="addMe('Coder','coder')"/>
+                      <label for="coder">Coder</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="ui" ng-click="addMe('UI/UX','ui')"/>
+                      <label for="ui">UI/UX</label>
+                    </span>
+                <span class="options">
+                      <input type="checkbox" id="humanresource" ng-click="addMe('Human Resource','humanresource')"/>
+                      <label for="humanresource">Human Resource</label>
+                    </span>
+              </div>
+            </div>
+            <div class="cad-padding cad-padding-service field-study">
+              <div ng-repeat="srvc in hiringList" class="form-group cad-list">
+                <div> <img class="cross-img" src="img/cancel-button.png" ng-click="removeMe(srvc.id,$index)" aria-hidden="true">
+                </div>
+                <div>{{srvc.val}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="reg-btn">
+          <button type="submit" class="btn">SUBMIT</button>
+        </div>
+		</br>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+	$.scrollify.disable();
+</script>

@@ -1,0 +1,223 @@
+<div class="custom_section">
+<div class="reg about">
+  <div class="registration">
+	<div class="container">          
+	  <ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li id="bcrumb-li">Partner With Us</li> 
+	  </ol>
+	</div>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+          <div class="text-center">
+            <h4 class="primary">PARTNER WITH US</h4>
+            <P class="danger reg-font">Signing up is simple. Enter your detail below, read the terms and privacy policy, and hit 'register' to hear
+              from us soon.
+            </P>
+          </div>
+        </div>
+      </div>
+      <form class="registration-form" ng-submit="submitForm(form)" name="formName">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group" ng-class="{'form-invalid': formName.name.$invalid && formName.name.$touched}">
+              <input type="text" class="form-control" name="name" id="name" placeholder="NAME" ng-model="form.name" required>
+              <span ng-show="formName.name.$touched && formName.name.$invalid">Please enter name.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+              <input type="email" name="email" class="form-control" id="email" ng-model="form.email" placeholder="EMAIL ADDRESS" required>
+              <span ng-show="formName.email.$touched && formName.email.$invalid">Please enter vaild email.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.pwd.$invalid && formName.pwd.$touched}">
+              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="PASSWORD" ng-model="form.password" ng-minlength="8"
+                ng-maxlength="20" required>
+              
+              <span ng-show="formName.pwd.$touched && formName.pwd.$invalid || formName.pwd.$error.minlength">
+                Passwords must be between 8 and 20 characters.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.pwd1.$invalid && formName.pwd1.$touched}">
+              <input type="password" class="form-control" id="pwd" name="pwd1" placeholder="REPEAT PASSWORD" ng-model="form.confirmPassword"
+                required>
+              <span ng-show="formName.pwd1.$touched && formName.pwd1.$invalid">Please Re-enter password.</span>
+              <div ng-if="!(form.password == form.confirmPassword)" class="danger custom-valid">Passwords do not match.</div>
+            </div>
+            <div class="add-textarea">
+              <div class="form-group" ng-class="{'form-invalid': formName.address1.$invalid && formName.address1.$touched}">
+                <textarea class="form-control" name="address1" id="comment" rows="9" placeholder="ADDRESS" ng-model="form.address" required></textarea>
+                <span ng-show="formName.address1.$touched && formName.address1.$invalid">Please enter address.</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group" ng-class="{'form-invalid': formName.username.$invalid && formName.username.$touched}">
+              <input type="text" class="form-control" name="username" id="username" placeholder="USERNAME" ng-model="form.userName" required>
+              <span ng-show="formName.username.$touched && formName.username.$invalid">Please enter username.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.cellMobile.$invalid && formName.cellMobile.$touched}">
+              <input type="text" name="cellMobile" class="form-control" phone-input id="phone" ng-model="form.cellMobile" placeholder="CELL PHONE"
+                required>
+              <span ng-show="formName.cellMobile.$touched && formName.cellMobile.$invalid">
+                Please enter vaild 10 digit cell number.
+              </span>
+            </div>
+           
+            <div class="form-group" ng-class="{'form-invalid': formName.officeMobile.$invalid && formName.officeMobile.$touched}">
+              <input type="text" name="officeMobile" class="form-control" phone-input id="officeno" ng-model="form.officeMobile" placeholder="OFFICE PHONE"
+                required>
+              <span ng-show="formName.officeMobile.$touched && formName.officeMobile.$invalid">Please enter vaild 10 digit office number.</span>
+            </div>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <input type="text" class="form-control" id="city" placeholder="CITY" ng-model="form.city">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="state" placeholder="STATE" ng-model="form.state">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+              <input type="number" class="form-control" id="zipCode" placeholder="ZIP CODE" ng-model="form.zipCode">
+            </div>
+            <div class="form-group">
+              <div class="btn-group btn-country" ng-init="countrydrop= false">
+                <button type="button" class="btn btn-bussiness btn-main" ng-init="country = 'country'" ng-click="countrydrop=!countrydrop">COUNTRY
+                  <i class="fa  fa-reg" aria-hidden="true"></i>
+              </button>
+                <div class="dropdown-menu dropshow" ng-show="countrydrop">
+                  <div class="click-out" ng-click="countrydrop=!countrydrop"></div>
+                  <span class="options">
+                      <input type="radio" id="india" name="country" value="india" ng-model="form.country" ng-change="country='India'"/>
+                      <label for="india">India</label>
+                  </span>
+                  <span class="options">
+                      <input type="radio" id="USA" name="country" value="USA" ng-model="form.country" ng-change="country='USA'" />
+                   <label for="USA">USA</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="in-textarea">
+              <div class="form-group" ng-class="{'form-invalid': formName.comment.$invalid && formName.comment.$touched}">
+                <textarea type="text" class="form-control" name="comment" id="comment" rows="8" placeholder="INQUIRY DETAILS" ng-model="form.inquiry"
+                  required></textarea>
+                <span ng-show="formName.comment.$touched && formName.comment.$invalid">Please enter inquiry.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sub-content">
+          <div class="reg-dropdown2">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="btn-group business-mob" ng-init="businessdrop= false">
+                  <button type="button" class="btn btn-bussiness btn-main" ng-click="businessdrop=!businessdrop">
+                    BUSINESS UNIT 
+                    <i class="fa  fa-reg" aria-hidden="true"></i>
+                    </button>
+                  <div class="dropdown-menu dropshow" ng-show="businessdrop">
+                    <div class="click-out" ng-click="businessdrop=!businessdrop"></div>
+                    <span class="options">
+                      <input type="checkbox" id="Cad"  ng-click="add('cad','Cad')" />
+                      <label for="Cad">cad</label>
+                  </span>
+                    <span class="options">
+                      <input type="checkbox" id="Gis" ng-click="add('gis','Gis')"/>
+                      <label for="Gis">gis</label>
+                  </span>
+                    <span class="options">
+                      <input type="checkbox" id="Technology" ng-click="add('technology','Technology')"/>
+                      <label for="Technology">technology</label>
+                  </span>
+                  </div>
+                </div>
+                <div class="cad-padding">
+                  <div ng-repeat="business in businessList" class="form-group cad-list">
+                    <div>
+                      <img class="cross-img" src="img/cancel-button.png" ng-click="remove(business.id,$index)" aria-hidden="true">
+                    </div>
+                    <div>{{business.val}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="btn-group business-mob" ng-init="servicedrop= false">
+                  <button type="button" class="btn btn-bussiness btn-main" ng-click="servicedrop=!servicedrop">
+                    SERVICES REQUIRED  
+                    <i class="fa  fa-reg" aria-hidden="true"></i>
+                    <REQUIRED></REQUIRED>  
+                  </button>
+                  <div class="dropdown-menu dropshow" ng-show="servicedrop">
+                    <div class="click-out" ng-click="servicedrop=!servicedrop"></div>
+                    <span class="options">
+                      <input type="checkbox" id="drafting" value="Land Survey Drafting" ng-click="addMeReg('Land Survey Drafting','drafting')"/>
+                      <label for="drafting">Land Survey Drafting</label>
+                    </span>
+                    <span class="options">
+                      <input type="checkbox" id="development" ng-click="addMeReg('land development','development')"/>
+                      <label for="development">land development</label>
+                    </span>
+                    <span class="options">
+                      <input type="checkbox" id="cad" ng-click="addMeReg('cad conversion','cad')"/>
+                      <label for="cad">cad conversion</label>
+                    </span>
+                    <span class="options">
+                      <input type="checkbox" id="architectural"  ng-click="addMeReg('architectural drafting','architectural')"/>
+                      <label for="architectural">architectural drafting</label>
+                    </span>
+                    <span class="options">
+                      <input type="checkbox" id="gis" ng-click="addMeReg('GIS','gis')"/>
+                      <label for="gis">GIS</label>
+                    </span>
+                    <span class="options">
+                      <input type="checkbox" id="technology" ng-click="addMeReg('Technology','technology')"/>
+                      <label for="technology">Technology</label>
+                    </span>
+                  </div>
+                </div>
+                <div class="cad-padding cad-padding-service">
+                  <div ng-repeat="srvc in serviceList2" class="form-group cad-list">
+                    <div> <img class="cross-img" src="img/cancel-button.png" ng-click="removeMe(srvc.id,$index)" aria-hidden="true">
+                    </div>
+                    <div>{{srvc.val}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="checkbox-sec accept">
+            <p>
+              <input type="checkbox" id="test7" value="terms" ng-model="form.Terms" required/>
+              <label for="test7">I have read and accepted the <a href="" class="danger"> "Terms & Conditions" </a> Agreement.</label>
+            </p>
+            <p>
+              <input type="checkbox" id="test8" value="privacy" ng-model="form.privacy" required/>
+              <label for="test8">I have read and agreed to the <a href="" class="danger"> "privacy policy" </a> of G-Source Technologies LLC.</label>
+            </p>
+
+            <div class="reg-btn ">
+              <button type="submit" class="btn">REGISTER</button>
+            </div>
+      
+      </div>
+      </div>
+    </div>
+   
+  </div>
+</form>
+</div>
+<script>
+	$.scrollify.disable();
+</script>

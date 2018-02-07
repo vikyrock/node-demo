@@ -1,0 +1,218 @@
+<div class="custom_section">
+<div class="reg about">
+  <div class="registration">
+    <div class="container">
+      <div class="enquiry-tab hidden-xs ">
+        <div class="open-close pull-right ">
+          <div class="mt35 enquire brand-danger" ng-click="getMenus();">
+            <a class="whitey text-capitalize">
+                Enquire now
+            </a>
+          </div>
+        </div>
+        <div class="sides-menu menu-out">
+          <div class="mt-enquire  enquire brand-danger" ng-click="closeMenus();">
+            <a class="whitey text-capitalize">
+                          Enquire now
+            </a>
+          </div>
+          <form ng-submit="submitForm(formdata)" name="formName">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" ng-model="formdata.name" placeholder="NAME" required aplha-only>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="phone" ng-model="formdata.mobile" placeholder="CELL PHONE" required only-digits>
+                </div>
+
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group" ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+                  <input type="email" class="form-control" id="email" ng-model="formdata.email" placeholder="EMAIL ADDRESS" required>
+                  <span ng-show="formName.email.$touched && formName.email.$invalid">Please enter vaild email.</span>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="officeno" placeholder="COMPANY" ng-model="formdata.company" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="enquiry-content">
+              <div class="row">
+                <div class="col-md-12">
+
+                </div>
+                <div class="btn-group display" ng-init="enquirydrops = false">
+                  <button type="button" class="btn btn-bussiness btn-main  dropdown-toggle" ng-click="enquirydrops=!enquirydrops" data-toggle="dropdown">
+                    SERVICES REQUIRED  
+                    <i class="fa  fa-reg" aria-hidden="true"></i>
+                    <REQUIRED></REQUIRED>
+                    </button>
+
+                  <div class="dropdown-menu dropshow" ng-show="enquirydrops">
+                    <div class="click-out" ng-click="enquirydrops=!enquirydrops"></div>
+                    <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.draftings" ng-change="addMee('Land Survey Drafting','draftings')" id="draftings"/>
+                      <label for="draftings">Land Survey Drafting</label>
+                  </span>
+
+
+                    <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.developments" ng-change="addMee('land development','developments')" id="developments" />
+                      <label for="developments">land development</label>
+                  </span>
+
+
+                    <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.cads"  ng-change="addMee('cad conversion','cads')" id="cads" />
+                      <label for="cads">cad conversion</label>
+                  </span>
+
+                    <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.architecturals"  ng-change="addMee('architectural drafting','architecturals')" id="architecturals" />
+                      <label for="architecturals">architectural drafting</label>
+                  </span>
+
+                    <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.giss" ng-change="addMee('GIS','giss')" id="giss" />
+                      <label for="giss">GIS</label>
+                  </span>
+
+                    <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.technologys" ng-change="addMee('Technology','technologys')" id="technologys" />
+                      <label for="technologys">Technology</label>
+                  </span>
+                  </div>
+                </div>
+                <div class="enquiry-cad cad-padding">
+                  <div ng-repeat="srvc in serviceList1" class="form-group cad-list">
+                    <div>
+                      <img class="cross-img" src="img/cancel-button.png" ng-click="removeMee(srvc.id,$index)" aria-hidden="true">
+                    </div>
+                    <div>{{srvc.val}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="enquiry-textarea">
+              <div class="row">
+                <div class="form-group">
+                  <textarea type="text" class="form-control" id="comment" rows="8" placeholder="QUERY" ng-model="formdata.query" required></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="query-submit text-center">
+              <button class="btn brand-danger ">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+	  <ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li id="bcrumb-li">Enquiry</li> 
+	  </ol>
+      <div class="text-center">
+        <h1 class="primary uppercase">ENQUIRY</h1>
+        <p class="margin0 danger reg-font"> We have a 10-5! </p>
+        <p class="margin0 danger reg-font">Enter your details in brief and relay your message below. </p>
+        <p class="margin0 danger reg-font">Our crew will respond ASAP.</p>
+      </div>
+      <form class="enquiry" ng-submit="submitForm(formdata)" name="formName">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group" ng-class="{'form-invalid': formName.name.$invalid && formName.name.$touched}">
+              <input type="text" class="form-control" id="name" name="name" ng-model="formdata.name" placeholder="NAME" required>
+              <span ng-show="formName.name.$touched && formName.name.$invalid">Please enter name.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.mobile.$invalid && formName.mobile.$touched}">
+              <!-- <div class="info">Raw Value: {{formdata.mobile}}</div> -->
+              <input type="text" name="mobile" class="form-control input-phone" phone-input id="phone" ng-model="formdata.mobile" placeholder="CELL PHONE"
+                required>
+              <span ng-show="formName.mobile.$touched && formName.mobile.$invalid && formName.mobile.$invalid">Please enter vaild 10 digit phone number.</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <div class="form-group" ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+              <input type="email" name="email" class="form-control" id="email" ng-model="formdata.email" placeholder="EMAIL ADDRESS" required>
+              <span ng-show="formName.email.$touched && formName.email.$invalid">Please enter vaild email.</span>
+            </div>
+            <div class="form-group" ng-class="{'form-invalid': formName.officeno.$invalid && formName.officeno.$touched}">
+              <input type="text" class="form-control" id="officeno" name="officeno" placeholder="COMPANY" ng-model="formdata.company" required>
+              <span ng-show="formName.officeno.$touched && formName.officeno.$invalid">Please enter Company name.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="enquiry-content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="btn-group display" ng-init="enquirydrop= false">
+                <button type="button" class="btn btn-bussiness btn-main  dropdown-toggle" ng-click="enquirydrop=!enquirydrop" data-toggle="dropdown">
+                  SERVICES REQUIRED  
+                  <i class="fa  fa-reg" aria-hidden="true"></i><REQUIRED></REQUIRED></button>
+
+                <div class="dropdown-menu dropshow" ng-show="enquirydrop">
+                  <div class="click-out" ng-click="enquirydrop=!enquirydrop"></div>
+                  <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDwn.drafting" ng-change="addMe('Land Survey Drafting','drafting')" id="drafting"/>
+                      <label for="drafting">Land Survey Drafting</label>
+                  </span>
+                  <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDwn.development"   ng-change="addMe('land development','development')" id="development" />
+                      <label for="development">land development</label>
+                  </span>
+                  <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDwn.cad"  ng-change="addMe('cad conversion','cad')" id="cad" />
+                      <label for="cad">cad conversion</label>
+                  </span>
+                  <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDwn.architectural"  ng-change="addMe('architectural drafting','architectural')" id="architectural" />
+                      <label for="architectural">architectural drafting</label>
+                  </span>
+                  <span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDwn.gis" ng-change="addMe('GIS','gis')" id="gis" />
+                      <label for="gis">GIS</label>
+                  </span>
+                  <span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDwn.technology" ng-change="addMe('Technology','technology')" id="technology" />
+                      <label for="technology">Technology</label>
+                  </span>
+
+                </div>
+              </div>
+              <div class="enquiry-cad cad-padding">
+                <div ng-repeat="srvc in serviceList" class="form-group cad-list">
+                  <div>
+                    <img class="cross-img" src="img/cancel-button.png" ng-click="removeMe(srvc.id,$index)" aria-hidden="true">
+                  </div>
+                  <div>{{srvc.val}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="enquiry-textarea">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" ng-class="{'form-invalid': formName.query.$invalid && formName.query.$touched}">
+                <textarea class="form-control" id="comment" name="query" rows="10" placeholder="QUERY" ng-model="formdata.query" required></textarea>
+                <span ng-show="formName.query.$touched && formName.query.$invalid">Please enter query.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="query-submit text-center">
+          <button class="btn brand-danger ">SUBMIT</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  
+</div>
+</div>
+<script>
+	$.scrollify.disable();
+</script>

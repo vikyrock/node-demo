@@ -1,0 +1,229 @@
+.enquiry {
+  padding: 50px 0;
+   ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $brand-danger;
+  }
+  textarea {
+    border: 1px solid $brand-primary;
+    resize: none;
+  }
+}
+
+.query-submit {
+  button {
+    color: #fff;
+    padding: 10px 30px;
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+  }
+}
+
+.close-spacing {
+  margin-top: 20px;
+}
+
+.active-tab,
+.active {
+  background-color: $brand-danger !important;
+}
+
+.flex-direction-nav,
+.flexslider {
+  background-color: transparent;
+  border: none; // .flex-prev,.flex-next{
+  //   top:25%;
+  // }
+  .flex-nav-prev,
+  .flex-nav-next {
+    background-color: transparent;
+  }
+}
+
+.slider ul li:last-child {
+  margin-right: 0;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.architectural {
+  .circless {
+    background-image: url("../img/icons/architecturals.png");
+  }
+}
+
+.enquiry-textarea {
+  margin: 25px 5px 50px 5px;
+}
+
+.plumbing {
+  .circless {
+    background-image: url("../img/icons/pump.png");
+  }
+}
+
+.structurals {
+  .circless {
+    background-image: url("../img/icons/fan.png");
+  }
+}
+
+.mechanical {
+  .circless {
+    background-image: url("../img/icons/gearss.png");
+  }
+}
+
+.hvac {
+  .circless {
+    background-image: url("../img/icons/fans.png");
+  }
+}
+
+.electrical {
+  .circless {
+    background-image: url("../img/icons/plug.png");
+  }
+}
+
+.management {
+  .circless {
+    background-image: url("../img/icons/db.png");
+  }
+}
+
+.risk {
+  .circless {
+    background-image: url("../img/icons/graphs.png");
+  }
+}
+
+.analysis {
+  .circless {
+    background-image: url("../img/icons/chart.png");
+  }
+}
+
+.detail {
+  .circless {
+    background-image: url("../img/icons/map.png");
+  }
+}
+
+.enquiry-cad {
+  display: inline-block;
+  margin-left: 30px;
+  position: relative; // z-index: 9999;
+  .form-group input {
+    background: $brand-danger;
+     ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: white;
+    }
+  }
+}
+
+.cad-padding {
+  vertical-align: top;
+  width: 314px;
+  .form-group {
+    margin: 0;
+    input {
+      // background-color: transparent;
+      padding: 0 10px;
+      /* margin: 0; */
+      margin: 0 0 10px 5px;
+      color: #fff;
+      text-transform: uppercase;
+      border: none;
+    }
+  }
+  .cad-list {
+    position: relative;
+    background: $brand-danger;
+    padding: 10px 25px 10px 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    color: white;
+  }
+  .cross-img {
+    position: absolute;
+    top: 44%;
+    right: 2%;
+    width: 24px;
+    cursor: pointer;
+    @include transform(translate(0%,
+    -50%));
+    &:before {
+      color: #fff;
+    }
+  }
+}
+
+.cad-width {
+  width: calc(100% - 350px);
+  margin-top: -10px;
+  margin-left: 10px;
+}
+
+.cad-padding {
+   ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #fff;
+  }
+}
+
+.enquiry-content {
+  margin: 50px 0 0 45px;
+}
+
+.options {
+  display: block;
+  position: relative;
+  z-index: 5;
+}
+
+.dropdown-menu {
+  background-color: $brand-primary;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.fa-reg {
+  height: 50px;
+  width: 55px;
+  &:after {
+    content: "";
+    background-image: url(../img/home/arrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.left-arrow {
+  margin-right: 7px;
+}
+
+.right-arrow {
+  margin-left: 7px;
+}
+
+.gis-spacing {
+  padding: 5px 73px !important;
+}
+
+.tech-spacing {
+  padding: 5px 65px!important;
+}
+
+.btn-group.open .dropdown-toggle {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

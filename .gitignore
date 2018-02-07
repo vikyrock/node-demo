@@ -1,0 +1,8 @@
+bower_components/
+node_modules/
+w/
+.sass-cache/
+*.tar
+*.zip
+img2/
+.tmp/

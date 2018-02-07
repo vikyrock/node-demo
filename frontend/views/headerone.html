@@ -1,0 +1,241 @@
+<header class="other-header"  ng-controller="headerctrl">
+<nav class="navbar navbar-inverse navbar-fixed-top hover-underline-menu" data-menu-underline-from-center id="other">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id="ChangeToggle">
+		<div id="navbar-hamburger">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+		</div>
+		<div id="navbar-close" class="hidden">
+          <span class="fa fa-remove fa-lg" ></span>
+        </div>
+      </button>
+      <a class="navbar-brand" ui-sref="home"><img src="img/home/logo.png" height="45px" alt="" id="head_logo"></a>
+    </div>
+	
+    <div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav menu align-center">
+			<li class="dropdown" >
+					<a class="dropdown-toggle" data-toggle="dropdown">SERVICES <span class="caret"></span></a>
+				<ul class="dropdown-menu" id="dmcus">
+					<li><a ui-sref="service" >CAD</a></li>
+					<li><a ui-sref="gis">GIS</a></li>
+					<li><a ui-sref="technology">TECHNOLOGY</a></li>
+				</ul>
+			</li>
+			<li><a ui-sref="work">WHY US?</a></li> 
+			<li><a ui-sref="abouts">ABOUT US</a></li>
+			<li class="dropdown" >
+				<a class="dropdown-toggle" data-toggle="dropdown">MEDIA<span class="caret"></span></a>
+				<ul class="dropdown-menu" id="dmcus">
+					<li><a ui-sref="blog">BLOG</a></li> 
+					<li><a ui-sref="events">EVENTS</a></li>
+					<li><a ui-sref="news">NEWS</a></li>
+					
+				</ul>
+			</li>
+			<li>
+				<a ui-sref="contact" id="lnk">CONTACT US</a>
+			</li>
+			<li >
+				<a href="tel: +1 (888) 322-9925"><span class="fa fa-phone"></span>  +1 (888) 322-9925</a>
+			</li>
+			<li class="hidden-md hidden-lg">
+				<a href="mailto:info@gsourcedata.com"><span class="fa fa-envelope-o"></span>  info@gsourcedata.com</a>
+			</li>
+			<!-- <li> -->
+				<!-- <a ui-sref="" style="color:#f16366"><span class="fa fa-envelope-o" style="color:#f16366"></span>  info@gsourcedata.com</a> -->
+			<!-- </li> -->
+			<!-- <li> -->
+				<!-- <a href="http://admin.gsourcedata.com/#/core/login" role="button" id="head-btn"><button class="btn btn-danger">Login</button></a> -->
+			<!-- </li> -->
+			<!-- <li> -->
+				<!-- <a ui-sref=""  role="button" id="head-btn"><button class="btn btn-danger">Free Trial</button></a> -->
+			<!-- </li> -->
+		</ul>
+		
+	</div>
+  </div>
+		<div class="pull-left">
+			<div class="login-signup">
+				<a href="https://www.linkedin.com/company/gsource" target="_blank" class="hidden-xs ">
+                    <span class="fa fa-linkedin"></span>
+                </a>
+				</br></br></br>
+				<a href="https://www.facebook.com/gsourcedata/" target="_blank" class=" hidden-xs btn">
+                    <span class="fa fa-facebook"></span>
+                </a>
+				</br></br></br>
+				<a href="https://twitter.com/Gsourcedata" target="_blank"class=" hidden-xs btn">
+                    <span class="fa fa-twitter"></span>
+                </a></br></br></br>
+				<a href="https://plus.google.com/u/0/101255953418236897585" target="_blank"class=" hidden-xs btn">
+                    <span class="fa fa-google-plus"></span>
+                </a>
+			</div>
+		</div>
+		
+		<div class="enquiry-tab hidden-xs" ng-controller="SideEnquiryCtrl">
+			<div class="open-close pull-right ">
+				<div class="mt35 enquire brand-danger" ng-click="getMenus();">
+					<a href="javascript:void(0)" class="whitey text-capitalize">
+                          Enquire now
+                            
+                        </a>
+				</div>
+			</div>
+			<div class="click-out sides-menu menu-out" ng-click="closeMenus();"></div>
+			<div class="sides-menu menu-out">
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<div class="mt-enquire enquire" ng-click="closeMenus();">
+							
+							<img src="img/cancel-button.png"> Contact us on our toll free number: <a href="tel:+18883229925">+1(888) 322-9925</a>
+							
+						</div>
+					</div>
+				</div>
+				<form ng-submit="submitForm(formdata)" name="formName">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group" ng-class="{'form-invalid': formName.name.$invalid && formName.name.$touched}">
+								<input type="text" class="form-control" id="name" name="name" ng-model="formdata.name" placeholder="NAME" required>
+								<span ng-show="formName.name.$touched && formName.name.$invalid">Please enter name.</span>
+							</div>
+							<div class="form-group" ng-class="{'form-invalid': formName.mobile.$invalid && formName.mobile.$touched}">
+								<input type="text" name="mobile" class="form-control" id="phone" ng-model="formdata.mobile" placeholder="CELL PHONE" required
+								    phone-input>
+								<span ng-show="formName.mobile.$touched && formName.mobile.$invalid">enter vaild 10 digit</span>
+							</div>
+
+						</div>
+
+						<div class="col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group" ng-class="{'form-invalid': formName.email.$invalid && formName.email.$touched}">
+								<input type="email" name="email" class="form-control" id="email" ng-model="formdata.email" placeholder="EMAIL ADDRESS" required>
+								<span ng-show="formName.email.$touched && formName.email.$invalid">enter vaild email.</span>
+							</div>
+							<div class="form-group" ng-class="{'form-invalid': formName.officeno.$invalid && formName.officeno.$touched}">
+								<input type="text" class="form-control" id="officeno" name="officeno" placeholder="COMPANY" ng-model="formdata.company" required>
+								<span ng-show="formName.officeno.$touched && formName.officeno.$invalid">enter Company name.</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="enquiry-content">
+						<div class="row">
+							<div class="col-md-12  col-sm-12  col-xs-12">
+								<div class="btn-group display" ng-init="enquirydrops = false">
+									<button type="button" class="btn btn-bussiness btn-main  dropdown-toggle" ng-click="enquirydrops=!enquirydrops" data-toggle="dropdown">
+                                        SERVICES REQUIRED  
+                                        <i class="fa  fa-reg" aria-hidden="true"></i>
+                                        <REQUIRED></REQUIRED>
+                                        </button>
+									<div class="dropdown-menu dropshow" ng-show="enquirydrops">
+										<div class="click-out" ng-click="enquirydrops=!enquirydrops"></div>
+										<span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.draftings" ng-change="addMee('Land Survey Drafting','draftings')" id="draftings"/>
+            <label for="draftings">Land Survey Drafting</label>
+                  </span>
+
+
+										<span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.developments"   ng-change="addMee('land development','developments')" id="developments" />
+            <label for="developments">land development</label>
+                  </span>
+
+
+										<span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.cads"  ng-change="addMee('cad conversion','cads')" id="cads" />
+            <label for="cads">cad conversion</label>
+                  </span>
+
+										<span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.architecturals"  ng-change="addMee('architectural drafting','architecturals')" id="architecturals" />
+            <label for="architecturals">architectural drafting</label>
+                  </span>
+
+										<span class="options">
+                      <input type="checkbox"  ng-model="formdata.myDropDowns.giss" ng-change="addMee('GIS','giss')" id="giss" />
+            <label for="giss">GIS</label>
+                  </span>
+
+										<span class="options">
+                      <input type="checkbox" ng-model="formdata.myDropDowns.technologys" ng-change="addMee('Technology','technologys')" id="technologys" />
+            <label for="technologys">Technology</label>
+                  </span>
+
+									</div>
+								</div>
+
+
+								<div class="enquiry-cad cad-padding cad-width">
+									<div ng-repeat="srvc in serviceList1" class="form-group cad-list">
+										<div>
+											<img class="cross-img" src="../img/cancel-button.png" ng-click="removeMee(srvc.id,$index)" aria-hidden="true">
+										</div>
+										<div>{{srvc.val}}</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="enquiry-textarea">
+						<div class="row">
+							<div class="col-md-12  col-sm-12 col-xs-12">
+								<div class="form-group" ng-class="{'form-invalid': formName.query.$invalid && formName.query.$touched}">
+									<textarea type="text" class="form-control" id="comment" name="query" rows="10" placeholder="QUERY" ng-model="formdata.query"
+									    required></textarea>
+									<span ng-show="formName.query.$touched && formName.query.$invalid">Please enter query.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="query-submit text-center">
+						<button class="btn brand-danger ">SUBMIT</button>
+					</div>
+				</form>
+			</div>
+		</div>
+</nav>
+</header>
+<script>
+ 
+	$("body").css('background-image', 'url(img/bg-dotted.jpg)');
+	$(".navbar .navbar-nav > li > a").css('color', '#4e65af');
+	
+	$(window).scroll(function() {
+		if ($(this).scrollTop()>10) { // this refers to window
+			$('.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus').css('background-color','transparent');
+			$('.navbar-inverse').css('background-color','#fff');
+			$(".navbar .navbar-nav > li > a").css('color', '#4e65af');
+			$('#header_logo').attr("src","img/home/logo.png");
+			$(".navbar-inverse .navbar-nav .open .dropdown-menu > li > a").css('color', '#fff');
+		}
+		if ($(this).scrollTop()===0) { // this refers to window
+			$('.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus').css('background-color','transparent');
+			$('.navbar-inverse').css('background-color','transparent');
+			$(".navbar .navbar-nav > li > a").css('color', '#4e65af');
+			$('#header_logo').attr("src","img/home/logo.png");
+			$(".navbar-inverse .navbar-nav .open .dropdown-menu > li > a").css('color', '#fff');
+		}
+		
+	});
+ </script>
+ <script>
+	$("[data-menu-underline-from-center] a").addClass("underline-from-center");
+</script>
+
+<script>
+
+$(function() {
+  $('#ChangeToggle').click(function() {
+    $('#navbar-hamburger').toggleClass('hidden');
+    $('#navbar-close').toggleClass('hidden');  
+  });
+});
+
+</script>

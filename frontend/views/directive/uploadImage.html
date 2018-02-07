@@ -1,0 +1,9 @@
+<div class="form-group" style="margin:0px;">
+    <div class="btn-upload btn btn-primary btn-outline btn-small create-btn line0">
+        <input id="inputImage" type="file" accept="image/*,application/pdf" title="Choose File" image="image" class="btn-primary pointer">
+        <span>UPLOAD RESUME*</span>
+    </div>
+    <!--<button>UPLOAD RESUME <span class="button-pluse"> <i class="fa fa-plus" aria-hidden="true"></i></span></button>-->
+</div>
+    <span class="label label-success" ng-if="uploadStatus == 'uploaded'" ng-show="!isMultiple">Document Uploaded - {{image.file.name}}</span>
+    <span class="label label-warning" ng-if="uploadStatus == 'uploading'" ng-show="!isMultiple">Uploading Document {{image.file.name}}</span>
