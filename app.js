@@ -1,20 +1,4 @@
-var firstapp = angular.module('firstapp', [
-  'ui.router',
-  'phonecatControllers',
-  'templateservicemod',
-  'navigationservice',
-  'pascalprecht.translate',
-  'imageupload',
-  'angulartics',
-  'toastr',
-  'angulartics.google.analytics',
-  'ngMeta'
-])
-
-firstapp.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, ngMetaProvider) {
-  // for http request with session
-  $httpProvider.defaults.withCredentials = true
-  $stateProvider
+@#$!$@%!%@%&!@!%@^!%@^!%@^!^^@^!^@^!@^!%@%!%%^@$!^%@^!@!%@^!&*@*(!*@*!*@*!&@!%@^&)  $stateProvider
     .state('home', {
       url: '/',
       templateUrl: 'views/template.html',

@@ -1,5 +1,4 @@
-var initMap = function () {}
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ngMeta'])
+fhbghvfbhbdhuvnfv.fvfovkfiv,fivk.dfvdfvf00 ifk.if. kikgrionservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ngMeta'])
   .controller('HomeCtrl', function ($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, $location, $uibModal, $window, ngMeta) {
     $scope.template = TemplateService.changecontent('home'); // Use same name of .html file
     $scope.menutitle = NavigationService.makeactive('Cad Drafting Services | GIS Mapping | USA') // This is the Title of the Website
